@@ -1,0 +1,8 @@
+page-home{
+ ion-slides {
+    height: auto !important;
+  }
+  ion-slides .slide-zoom {
+    font-size: 0;
+  }
+}

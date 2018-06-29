@@ -1,0 +1,206 @@
+<!--
+  Generated template for the Open2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <back-btn></back-btn>
+        <ion-title>{{title}}</ion-title>
+        <button class="case" (click)="nav_case_page()">方案查询</button>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-color-blue margin-bottom-0px">
+
+    <div style="display: flex;justify-content: space-around;margin-top:15px;" *ngIf="date_select">
+        <button class="but-nav" tappable (click)="today()">今天</button>
+        <select class="col-xs-12" [(ngModel)]="date_select" (change)="select_event(date_select)" style="padding: 0;margin-top:0;height: 40px;">
+            <option *ngFor="let date of dates" [value] ="date">{{date}}</option>
+        </select>
+        <button class="but-nav" tappable (click)="yesterday()">昨天</button>
+    </div>
+    <div style="display: flex;flex:1;" *ngIf="date_select">
+        <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 15%;">期号</p>
+        <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 45%;">开奖号码</p>
+        <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 15%;">和值</p>
+        <p *ngIf="title!='北京PK10'" class="p-nav2" style="flex: 0 0 25%;">开奖时间</p>
+        <p *ngIf="title=='北京PK10'" class="p-nav" style="flex: 0 0 25%;">期号</p>
+        <p *ngIf="title=='北京PK10'" class="p-nav" style="flex: 0 0 75%;">开奖号码</p>
+    </div>
+    <div *ngFor="let data of datas" style="display:flex;flex:1;flex-flow:wrap;">
+        <p *ngIf="title!='北京PK10'" class="row-three" style="flex: 0 0 15%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.date1}}</p>
+        <p *ngIf="title=='北京PK10'" class="row-three" style="flex: 0 0 25%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.date1}}</p>
+        <div *ngIf="title!='北京PK10'" class="row-one" style="display:flex;justify-content:space-around; flex: 0 0 45%;margin: 0;flex:1;" [ngClass]="{'content-center':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'}">
+            <div *ngFor="let num of data.num;let i=index;" [ngClass]="{'margin-right':title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&i!=0}">
+                <div [ngClass]="{
+              'background-red':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]==data.num[1]&&data.num[0]!=data.num[2]||
+                               title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[1]==data.num[2]&&data.num[0]!=data.num[2]||
+                               title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]==data.num[2]&&data.num[0]!=data.num[1]||
+                               title=='重庆时时彩'||title=='天津时时彩'||title=='北京时时彩'||title=='台湾五分彩'||title=='腾讯分分彩'||title=='QQ分分彩'||title=='极速分分彩',
+              'background-blue':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]!=data.num[1]&&data.num[1]!=data.num[2]&&data.num[0]!=data.num[2],
+              'background-purple':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]==data.num[1]&&data.num[0]==data.num[2] || get_state(data.push_nums,num) && title=='重庆时时彩' || get_state(data.push_nums,num) && title=='天津时时彩'|| get_state(data.push_nums,num) && title=='北京时时彩'|| get_state(data.push_nums,num) && title=='台湾五分彩' || get_state(data.push_nums,num) && title=='腾讯分分彩'|| get_state(data.push_nums,num) && title=='QQ分分彩'|| get_state(data.push_nums,num) && title=='极速分分彩'}"
+                    style="color:#fff;border-radius:50%;width:1.8rem;height:1.8rem;font-size: 1.6rem;line-height: 1.8rem;text-align: center;">
+                    {{num}}
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="title=='北京PK10'" class="row-one" style="display:flex;justify-content:space-around; flex: 0 0 80%;margin: 0;flex:1;">
+            <div *ngFor="let num of data.num;let i=index;">
+                <div style="background:crimson;color:#fff;border-radius:50%;width:1.8rem;height:1.8rem;font-size: 1.2rem;line-height: 1.8rem;text-align: center;">
+                    {{num}}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="title!='北京PK10'" class="row-one" style="flex: 0 0 15%;margin: 0;display:flex;justify-content: center;">
+            <div [ngClass]="{
+            'background-red':title=='重庆时时彩'&&data.num3>22||
+                             title=='天津时时彩'&&data.num3>22||
+                             title=='北京时时彩'&&data.num3>22||
+                             title=='台湾五分彩'&&data.num3>22||
+                             title=='腾讯分分彩'&&data.num3>22||
+                             title=='QQ分分彩' &&data.num3>22||
+                             title=='极速分分彩' &&data.num3>22||
+                             title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num3>10,
+            'background-blue':title=='重庆时时彩'&&data.num3<23||
+                              title=='天津时时彩'&&data.num3<23||
+                              title=='北京时时彩'&&data.num3<23||
+                              title=='台湾五分彩'&&data.num3<23||
+                              title=='腾讯分分彩'&&data.num3<23||
+                              title=='QQ分分彩' &&data.num3<23||
+                               title=='极速分分彩' &&data.num3<23||
+                              title!='重庆时时彩'&& title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&& data.num3<11}" style="color:#fff;border-radius:2px;width:2.5rem;height:1.8rem;font-size: 1.6rem;line-height: 1.8rem;text-align: center;">
+                {{data.num3}}
+            </div>
+        </div>
+        <p *ngIf="title!='北京PK10'" class="row-two" style="flex: 0 0 25%;margin: 0;display: flex;justify-content: center;align-items: center;"> {{data.date3}} </p>
+
+        <p *ngIf="title=='北京PK10' && data.push_num[0]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五6码: {{data.push_num[0]}} (
+            <span *ngIf="data.push_num[0].search(data.num[data.push_num[0].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[0].search(data.num[data.push_num[0].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[1]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五6码: {{data.push_num[1]}} (
+            <span *ngIf="data.push_num[1].search(data.num[data.push_num[1].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[1].search(data.num[data.push_num[1].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[2]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五6码: {{data.push_num[2]}} (
+            <span *ngIf="data.push_num[2].search(data.num[data.push_num[2].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[2].search(data.num[data.push_num[2].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[3]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五6码: {{data.push_num[3]}} (
+            <span *ngIf="data.push_num[3].search(data.num[data.push_num[3].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[3].search(data.num[data.push_num[3].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[4]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五7码: {{data.push_num[4]}} (
+            <span *ngIf="data.push_num[4].search(data.num[data.push_num[4].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[4].search(data.num[data.push_num[4].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[5]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五7码: {{data.push_num[5]}} (
+            <span *ngIf="data.push_num[5].search(data.num[data.push_num[5].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[5].search(data.num[data.push_num[5].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[6]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五7码: {{data.push_num[6]}} (
+            <span *ngIf="data.push_num[6].search(data.num[data.push_num[6].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[6].search(data.num[data.push_num[6].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[7]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五7码: {{data.push_num[7]}} (
+            <span *ngIf="data.push_num[7].search(data.num[data.push_num[7].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[7].search(data.num[data.push_num[7].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[8]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五8码: {{data.push_num[8]}} (
+            <span *ngIf="data.push_num[8].search(data.num[data.push_num[8].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[8].search(data.num[data.push_num[8].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[9]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五8码: {{data.push_num[9]}} (
+            <span *ngIf="data.push_num[9].search(data.num[data.push_num[9].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[9].search(data.num[data.push_num[9].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[10]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五8码: {{data.push_num[10]}} (
+            <span *ngIf="data.push_num[10].search(data.num[data.push_num[10].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[10].search(data.num[data.push_num[10].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[11]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五8码: {{data.push_num[11]}} (
+            <span *ngIf="data.push_num[11].search(data.num[data.push_num[11].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[11].search(data.num[data.push_num[11].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[12]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五9码: {{data.push_num[12]}} (
+            <span *ngIf="data.push_num[12].search(data.num[data.push_num[12].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[12].search(data.num[data.push_num[12].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[13]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五9码: {{data.push_num[13]}} (
+            <span *ngIf="data.push_num[13].search(data.num[data.push_num[13].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[13].search(data.num[data.push_num[13].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[14]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            前五9码: {{data.push_num[14]}} (
+            <span *ngIf="data.push_num[14].search(data.num[data.push_num[14].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[14].search(data.num[data.push_num[14].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='北京PK10' && data.push_num[15]" class="row-two" style="flex: 0 0 100%;margin: 0;display: flex;justify-content: center;align-items: center;">
+            后五9码: {{data.push_num[15]}} (
+            <span *ngIf="data.push_num[15].search(data.num[data.push_num[15].split('|')[0]])!=-1" class="text-red">中</span>
+            <span *ngIf="data.push_num[15].search(data.num[data.push_num[15].split('|')[0]])==-1" class="text-green">挂</span>)</p>
+        <p *ngIf="title=='重庆时时彩'||title=='天津时时彩'||title=='北京时时彩'||title=='台湾五分彩'|| title=='腾讯分分彩' || title=='QQ分分彩'|| title=='极速分分彩'" style="padding-left:5px;margin: 0;color: #bababa;margin-top: 5px;margin-bottom: 5px;display:flex;flex:1;flex: 0 0 100%;flex-flow: wrap;">
+            <span style="flex: 0 0 100%;display: flex;justify-content: flex-start;">
+                   <span>五星胆码：</span>
+            <span *ngIf="data.push_nums" style="line-height:1.4rem;display: flex;align-items:center;" class="text-blue">{{data.push_nums}}<span style="color:#636363; ">{{data.not_push_num}}</span></span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>总和：</span>
+            <span *ngIf="data.f" class="text-blue">{{data.e3}}{{data.e4}}</span>
+            <span *ngIf="data.f" style="padding-right:10px;"> (<span [ngClass]="{'text-red':data.state6=='中','text-orange':data.state6=='和','text-green':data.state6=='挂'}">{{data.state6}}</span>)
+            </span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>万位：</span>
+            <span *ngIf="data.a" class="text-blue">{{data.a}}</span>
+            <span *ngIf="data.a" style="padding-right:10px;">(<span [ngClass]="{'text-red':data.state1=='中','text-orange':data.state1=='和','text-green':data.state1=='挂'}">{{data.state1}}</span>)
+            </span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>千位：</span>
+            <span *ngIf="data.b" class="text-blue">{{data.b}}</span>
+            <span *ngIf="data.b" style="padding-right:10px;">(<span [ngClass]="{'text-red':data.state2=='中','text-orange':data.state2=='和','text-green':data.state2=='挂'}">{{data.state2}}</span>)
+            </span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>百位：</span>
+            <span *ngIf="data.c" class="text-blue">{{data.c}}</span>
+            <span *ngIf="data.c" style="padding-right:10px;">(<span [ngClass]="{'text-red':data.state3=='中','text-orange':data.state3=='和','text-green':data.state3=='挂'}">{{data.state3}}</span>)
+            </span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>十位：</span>
+            <span *ngIf="data.d" class="text-blue">{{data.d}}</span>
+            <span *ngIf="data.d" style="padding-right:10px;">(<span [ngClass]="{'text-red':data.state4=='中','text-orange':data.state4=='和','text-green':data.state4=='挂'}">{{data.state4}}</span>)
+            </span>
+            </span>
+            <span style="flex: 0 0 33.33%;display: flex;justify-content: flex-start;">
+                  <span>个位：</span>
+            <span *ngIf="data.e" class="text-blue">{{data.e}}</span>
+            <span *ngIf="data.e" style="padding-right:10px;">(<span [ngClass]="{'text-red':data.state5=='中','text-orange':data.state5=='和','text-green':data.state5=='挂'}">{{data.state5}}</span>)
+            </span>
+            </span>
+        </p>
+        <p *ngIf="title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩'&&title!='台湾五分彩'&& title!='腾讯分分彩'&& title!='QQ分分彩'&& title!='极速分分彩'&& title!='北京PK10'" style="padding-left:1rem;margin: 0;color: #bababa;margin-top: 5px;margin-bottom: 5px;display:flex;flex:1;flex: 0 0 100%;flex-flow:wrap;">
+            <span style="flex: 0 0 50%;display: flex;justify-content: space-between;">
+                   <span>三军号码：</span>
+            <span *ngIf="data.push_nums" style="line-height:1.4rem;display: flex;align-items:center;" [ngClass]="{'text-black':data.push_nums=='暂无','text-blue':data.push_nums!='暂无'}">{{data.push_nums}}<span *ngIf="data.push_nums_2" style="color:#636363; ">{{data.push_nums_2}}</span></span>
+            <span *ngIf="data.push_nums">中 <span style="color: crimson;font-weight: bold;">{{data.win_nums}}</span> 球</span>
+            </span>
+            <span style="flex: 0 0 45%;display: flex;justify-content: space-between;">
+                  <span style="padding-left:1.5rem;">总和：</span>
+            <span *ngIf="data.e" class="text-blue">{{data.e3}}{{data.e4}}</span>
+            <span *ngIf="data.e" style="padding-right:10px;"> (<span [ngClass]="{'text-red':data.state3=='中','text-orange':data.state3=='和','text-green':data.state3=='挂'}">{{data.state6}}</span>)
+            </span>
+            </span>
+        </p>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="loading($event)" threshold="0px" position="bottom">
+        <ion-infinite-scroll-content loadingText="正在努力加载中..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人中心
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class="bg-color-blue">
+  <div style="display: flex;align-items: center;justify-content: center;flex:1;flex-wrap:wrap;"> 
+    <div style="flex: 0 0 100% ;">
+        <img src="assets/icon/userface.png" class="userimg">
+    </div>
+    <p *ngIf="state" style="color: #fff;font-size: 1.5rem;margin: 0;margin-bottom: 5px;">
+        <span (click)="NavLoginPage()"> 登录 </span> 
+        <span style="padding-left: 10px;padding-right: 10px;">/</span> 
+        <span (click)="NavRegisterPage()">注册</span> 
+    </p>
+    <div style="display: flex;justify-content:space-around;margin:0 0 10px 0;flex: 0 0 100%;"  *ngIf="!state">
+        <span style="color: #fff;font-size: 1.5rem;">hello，{{username}} </span>
+        <span style="color:crimson;font-size: 1.5rem;" (click)="cancel()" >注销</span> 
+    </div>
+  </div>
+   <hr>
+   <!--<div *ngIf="admin" style="border-bottom: 1px solid #dce8ea;" (click)="PushSeting()">
+    <h5 style="padding-left: 1rem;padding-right: 10px;display: flex;align-items: center;margin-top: 10px;margin-bottom: 10px;"> 
+      <ion-icon name="md-settings" style="color:#fff;"></ion-icon> 
+      <span style="padding-left:1rem;color: #dce8ea;">设置</span>
+      <ion-icon name="ios-arrow-forward" style="color:#dce8ea;position:absolute ;right:20px;"></ion-icon> 
+    </h5>
+   </div>-->
+
+
+  <div style="border-bottom: 1px solid #dce8ea;">
+    <p style="padding-left:1rem;padding-right: 10px;display: flex;align-items: center;margin-top: 10px;margin-bottom: 10px;"> 
+      <ion-icon name="information-circle" style="color:#fff;"></ion-icon> 
+      <span style="padding-left:1rem;color: #dce8ea;">关于</span>
+      <ion-icon name="ios-arrow-forward" style="color:#eee;position:absolute ;right:20px;"></ion-icon> 
+    </p>
+  </div>
+
+  <div style="border-bottom: 1px solid #dce8ea;" (click)="contact()">
+    <p style="padding-left:1rem;padding-right: 10px;display: flex;align-items: center;margin-top: 10px;margin-bottom: 10px;"> 
+      <ion-icon name="md-text" style="color:#fff;"></ion-icon> 
+      <span style="padding-left:1rem;color: #dce8ea;">咨询</span>
+      <ion-icon name="ios-arrow-forward" style="color:#eee;position:absolute ;right:20px;"></ion-icon> 
+    </p>
+  </div>
+  <div style="border-bottom: 1px solid #dce8ea;" (click)="localNotifications()">
+    <p style="padding-left: 1rem;padding-right: 10px;display: flex;align-items: center;margin-top: 10px;margin-bottom: 10px;"> 
+      <ion-icon name="ios-notifications" style="color:#fff;"></ion-icon> 
+      <span style="padding-left:1rem;color: #dce8ea;">通知</span>
+      <ion-icon name="ios-arrow-forward" style="color:#eee;position:absolute ;right:20px;"></ion-icon> 
+    </p>
+  </div>
+</ion-content>

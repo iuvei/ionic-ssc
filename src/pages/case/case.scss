@@ -1,0 +1,25 @@
+page-case {
+.border-right{
+    border-right: 1px #666 solid;
+   }
+.border-left{
+    border-left: 1px #666 solid;
+   }
+select{
+ padding-left: 15px !important; padding-right:15px !important;margin:7px !important;outline: none;border:none;color:#fff;background: cornflowerblue;height: auto !important;
+}
+select {
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}
+.p-text{
+text-align: center;color: #eee;border:1px #bababa solid; padding-top: 7px;padding-bottom: 7px;margin: 0;margin-top: 0px;border-bottom:0px solid #bababa;border-top:2px solid #bababa;
+}
+.p-td{
+text-align: center;color: #eee;border:1px solid #bababa;border-bottom:0px solid #bababa;border-top:2px solid #bababa; padding-top: 7px;padding-bottom: 7px;margin: 0;
+}
+hr{
+    margin: 0; background: #bababa !important; height: 2px;
+}
+}

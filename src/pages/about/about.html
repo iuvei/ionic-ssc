@@ -1,0 +1,85 @@
+<ion-header>
+    <ion-navbar>
+        <back-btn></back-btn>
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-color-blue" (AboutDirective)="Change($event)">
+    <div class="bg-color-black" style="margin-bottom:10px;padding:10px; ">
+        <div style="padding-left: 5px;">
+            <p style="color: #fff;margin: 0;white-space:nowrap;">{{datas.name}}
+                <span style="color:#bababa;font-size: 12px;position:absolute;right:40px;padding-top:5px;" tappable (click)="PushOpen(datas.name)">点击查看历史开奖记录</span>
+                <ion-icon name="ios-arrow-forward" style="font-size: 12px;color:#bababa;position: absolute;right:20px;padding-top:8px;"></ion-icon>
+            </p>
+            <p style="padding-right:10px;white-space:nowrap;color:#fff;margin: 0;margin-top:8px;">
+                第 <span style="color: #fff;font-weight: bold;">{{datas.date}}</span> 期
+                <span *ngIf="datas.name!='北京PK10'" style="color:#fff;float: right;font-weight: bold;">上期开奖：{{datas.num}}</span>
+            </p>
+            <p style="font-size:1.4rem;margin:0 auto;color: #fff;margin-top:8px;">剩余时间：{{datas.hour}}：{{datas.minute}}：{{datas.second}} </p>
+            <p *ngIf="datas.name=='北京PK10'" style="color:#fff;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">第五名：</span><span style="padding-right:10px;font-size: 1.6rem;color:#fff;">{{datas.a}}</span>
+            </p>
+            <p *ngIf="datas.name=='北京PK10'" style="color:#fff;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">第六名：</span><span style="padding-right:10px;font-size: 1.6rem;color:#fff;">{{datas.b}}</span>
+            </p>
+            <p *ngIf="datas.name=='北京PK10'" style="color:#fff;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">第二名：</span><span style="padding-right:10px;font-size: 1.6rem;color:#fff;">{{datas.c}}</span>
+            </p>
+            <p *ngIf="datas.name=='北京PK10'" style="color:#fff;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">第九名：</span><span style="padding-right:10px;font-size: 1.6rem;color:#fff;">{{datas.d}}</span>
+            </p>
+            <p *ngIf="datas.name=='北京PK10'" style="color:#fff;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">优先选择：</span><span style="padding-right:10px;font-size: 1.6rem;color:#fff;">{{datas.e}}</span>
+            </p>
+            <p *ngIf="datas.name=='北京PK10'" style="padding-right:10px;color:#fff;margin: 0;margin-top:1rem;">
+                <span style="color:#fff;">上期开奖：{{datas.num}}</span>
+            </p>
+
+            <p *ngIf="datas.name=='重庆时时彩'||datas.name=='天津时时彩'||datas.name=='北京时时彩'||datas.name=='台湾五分彩'||datas.name=='腾讯分分彩'||datas.name=='QQ分分彩'||datas.name=='极速分分彩'" style="color:#bababa;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">万位：</span><span [ngClass]="{'text-black':datas.a=='暂无','text-red':datas.a!='暂无'}" style="padding-right:10px;font-size: 1.6rem;">{{datas.a}}</span>
+                <span style="font-size: 1.3rem;">千位：</span><span [ngClass]="{'text-black':datas.b=='暂无','text-red':datas.b!='暂无'}" style="padding-right:10px;font-size: 1.6rem;">{{datas.b}}</span>
+            </p>
+            <p *ngIf="datas.name=='重庆时时彩'||datas.name=='天津时时彩'||datas.name=='北京时时彩'||datas.name=='台湾五分彩'||datas.name=='腾讯分分彩'||datas.name=='QQ分分彩'||datas.name=='极速分分彩'" style="color:#bababa;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">百位：</span><span [ngClass]="{'text-black':datas.c=='暂无','text-red':datas.c!='暂无'}" style="padding-right:10px;font-size: 1.6rem;">{{datas.c}}</span>
+                <span style="font-size: 1.3rem;">十位：</span><span [ngClass]="{'text-black':datas.d=='暂无','text-red':datas.d!='暂无'}" style="padding-right:10px;font-size: 1.6rem;">{{datas.d}}</span>
+            </p>
+            <p *ngIf="datas.name=='重庆时时彩'||datas.name=='天津时时彩'||datas.name=='北京时时彩'||datas.name=='台湾五分彩'||datas.name=='腾讯分分彩'||datas.name=='QQ分分彩'||datas.name=='极速分分彩'" style="color:#bababa;margin: 0;margin-top:8px;">
+                <span style="font-size: 1.3rem;">个位：</span><span [ngClass]="{'text-black':datas.e=='暂无','text-red':datas.e!='暂无'}" style="padding-right:10px;font-size: 1.6rem;">{{datas.e}}</span>
+            </p>
+            <p *ngIf="datas.one_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.one_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.one_num}}</span>
+            </p>
+            <p *ngIf="datas.two_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.two_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.two_num}}</span>
+            </p>
+            <p *ngIf="datas.three_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.three_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.three_num}}<span *ngIf="datas.three_num2" style="color:#636363; ">{{datas.three_num2}}</span></span>
+            </p>
+            <p *ngIf="datas.four_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.four_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.four_num}}</span>
+            </p>
+            <p *ngIf="datas.five_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.five_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.five_num}}</span>
+            </p>
+            <p *ngIf="datas.six_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.six_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.six_num}}</span>
+            </p>
+            <p *ngIf="datas.seven_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.seven_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.seven_num}}</span>
+            </p>
+            <p *ngIf="datas.eight_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.eight_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.eight_num}}</span>
+            </p>
+            <p *ngIf="datas.nine_num" style="color:#fff;margin: 0;margin-top:8px;font-weight: bold;">
+                <span style="font-size: 1.3rem;">{{datas.nine_text}}：</span><span [ngClass]="{'text-black':datas.push_nums=='暂无','text-red':datas.push_nums!='暂无'}" class="num_css">{{datas.nine_num}}<span style="color:#636363; ">{{datas.nine_num2}}</span></span>
+            </p>
+            <p style="color:#fff;margin: 0;margin-top:8px;display: flex;align-items:center;">
+                <span *ngIf="datas.name!='北京PK10'" style="font-size: 1.3rem;font-weight: bold;">总和：</span><span *ngIf="datas.name!='北京PK10'" [ngClass]="{'text-black':datas.f=='暂无','text-red':datas.f!='暂无'}" style="font-size: 1.6rem;">{{datas.f}}</span>
+                <span style="color:#bababa;font-size: 12px;position:absolute;right:40px;padding-top:5px;" tappable (click)="push_new_page(datas.name)">点击查看历史预测记录</span>
+                <ion-icon name="ios-arrow-forward" style="font-size: 12px;color:#bababa;position: absolute ;right:20px;padding-top:7px;"></ion-icon>
+            </p>
+            <p *ngIf="datas.hour=='00'&&datas.minute=='00'&& datas.second=='00'" style="color:papayawhip;font-size: 12px;">正在获取开奖结果，请稍后...如果长时间没有响应请下拉刷新！</p>
+        </div>
+    </div>
+</ion-content>

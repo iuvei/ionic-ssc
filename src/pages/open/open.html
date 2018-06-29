@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-navbar>
+        <back-btn></back-btn>
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="margin-top-0px bg-color-blue" (OpenDirective)="Change($event)" #content>
+    <ion-list class="margin-bottom-0px">
+        <div class="text-center" style="margin-top:15px;" *ngIf="newtime.hour&&newtime.minute&&newtime.second">
+            <span style="font-size:1.4rem;margin:0 auto;color: #fff;">距离下一期开奖剩余时间：{{newtime.hour}}：{{newtime.minute}}：{{newtime.second}}</span>
+        </div>
+        <div style="display: flex;justify-content: space-around;margin-top:15px;" *ngIf="date_select">
+            <button class="but-nav" tappable (click)="today()">今天</button>
+            <select class="col-xs-12" [(ngModel)]="date_select" (change)="select_event(date_select)" style="padding: 0;margin-top:0;height: 40px;">
+            <option *ngFor="let date of dates" [value] ="date">{{date}}</option>
+        </select>
+            <button class="but-nav" tappable (click)="yesterday()">昨天</button>
+        </div>
+        <div style="display: flex;flex:1;" *ngIf="date_select">
+            <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 15%;">期号</p>
+            <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 45%;">开奖号码</p>
+            <p *ngIf="title!='北京PK10'" class="p-nav" style="flex: 0 0 15%;">和值</p>
+            <p *ngIf="title!='北京PK10'" class="p-nav2" style="flex: 0 0 25%;">开奖时间</p>
+            <p *ngIf="title=='北京PK10'" class="p-nav" style="flex: 0 0 25%;">期号</p>
+            <p *ngIf="title=='北京PK10'" class="p-nav" style="flex: 0 0 75%;">开奖号码</p>
+            <!--<p *ngIf="title=='北京PK10'" class="p-nav2"style="flex: 0 0 25%;">开奖时间</p>-->
+        </div>
+        <div *ngFor="let data of datas;let i=index" style="display:flex;flex:1;">
+            <p *ngIf="title!='北京PK10'" class="row-one" style="flex: 0 0 15%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.date1}}</p>
+            <p *ngIf="title=='北京PK10'" class="row-one" style="flex: 0 0 25%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.date1}}</p>
+            <div *ngIf="title!='北京PK10'" class="row-one" style="display:flex;justify-content:space-around;flex: 0 0 45%;margin: 0;flex:1;"
+                [ngClass]="{'content-center':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩' &&title!='极速分分彩'}">
+                <div *ngFor="let num of data.num;let i=index;" [ngClass]="{'margin-right':title!='重庆时时彩'&&title!='天津时时彩'&&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&i!=0}">
+                    <div [ngClass]="{
+              'background-red':title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]==data.num[1]&&data.num[0]!=data.num[2]||
+                               title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[1]==data.num[2]&&data.num[0]!=data.num[2]||
+                               title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速Q分分彩'&&data.num[0]==data.num[2]&&data.num[0]!=data.num[1]||
+                               title=='重庆时时彩'||title=='天津时时彩' || title=='北京时时彩' || title=='台湾五分彩'|| title=='腾讯分分彩' || title=='QQ分分彩'||title=='极速分分彩',
+              'background-blue':title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]!=data.num[1]&&data.num[1]!=data.num[2]&&data.num[0]!=data.num[2],
+              'background-purple':title!='重庆时时彩'&&title!='天津时时彩' &&title!='北京时时彩'&&title!='台湾五分彩'&&title!='腾讯分分彩'&&title!='QQ分分彩'&&title!='极速分分彩'&&data.num[0]==data.num[1]&&data.num[0]==data.num[2]}"
+                        style="color:#fff;border-radius:50%;width:1.8rem;height:1.8rem;font-size: 1.6rem;line-height: 1.8rem;text-align: center;">
+                        {{num}}
+                </div>
+        </div>
+        </div>
+        <div *ngIf="title=='北京PK10'" class="row-one" style="display:flex;justify-content:space-around;flex: 0 0 80%;margin: 0;flex:1;">
+            <div *ngFor="let num of data.num;let i=index;">
+                <div style="background:crimson;;color:#fff;border-radius:50%;width:1.8rem;height:1.8rem;font-size: 1.4rem;line-height: 1.8rem;text-align: center;">
+                    {{num}}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="title!='北京PK10'" class="row-one" style="flex: 0 0 15%;margin: 0;display:flex;justify-content: center;">
+            <div [ngClass]="{
+            'background-red':title=='重庆时时彩'&&data.num3>22||
+                             title=='天津时时彩'&&data.num3>22||
+                             title=='北京时时彩'&&data.num3>22||
+                             title=='台湾五分彩'&&data.num3>22||
+                             title=='腾讯分分彩'&&data.num3>22||
+                             title=='QQ分分彩' &&data.num3>22||
+                             title=='极速分分彩'&&data.num3>22||
+                             title!='重庆时时彩' &&title!='天津时时彩'  &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速分分彩'&& data.num3>10,
+            'background-blue':title=='重庆时时彩'&&data.num3<23||
+                              title=='天津时时彩'&&data.num3<23||
+                              title=='北京时时彩'&&data.num3<23||
+                              title=='台湾五分彩'&&data.num3<23||
+                              title=='腾讯分分彩'&&data.num3<23||
+                              title=='QQ分分彩' &&data.num3<23||
+                              title=='极速分分彩' &&data.num3<23||
+                              title!='重庆时时彩'&& title!='天津时时彩' &&title!='北京时时彩' &&title!='台湾五分彩'&&title!='腾讯分分彩' &&title!='QQ分分彩'&&title!='极速分分彩'&& data.num3<11}"
+                style="color:#fff;border-radius:2px;width:2.5rem;height:1.8rem;font-size: 1.6rem;line-height: 1.8rem;text-align: center;">
+                {{data.num3}}
+        </div>
+        </div>
+        <p *ngIf="title!='北京PK10'" class="row-two" style="flex: 0 0 25%;margin: 0;display: flex;justify-content: center;align-items: center;">
+        {{data.date3}} </p>
+        </div>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="loading($event)" threshold="0px" position="bottom">
+        <ion-infinite-scroll-content loadingText="正在努力加载中..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

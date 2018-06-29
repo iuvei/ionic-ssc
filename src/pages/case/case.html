@@ -1,0 +1,47 @@
+<!--
+  Generated template for the CasePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <back-btn></back-btn>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="bg-color-blue" >
+    <div  *ngIf="date_select" style="display:flex;align-items: center;flex: 1;margin-top:5px;flex-wrap:wrap;justify-content:space-around;">
+      <!--<select  [(ngModel)]="case_select" (change)="select_event(case_select)" style="padding:5px;margin-top:0;font-size: 1.4rem;">
+            <option *ngFor="let case of cases;" [value] ="case.text">{{case.text}}</option>
+      </select>-->
+      <select  [(ngModel)]="date_select" (change)="select_event(date_select)" style="padding:5px;margin-top:0;font-size: 1.6rem;">
+            <option *ngFor="let date of dates" [value] ="date">{{date}}</option>
+      </select>
+  </div>
+   <div  *ngIf="count>0" style="display: flex;flex:1;margin-top: 7px;justify-content: center" >
+      <p class="p-text" style="flex: 0 0 30%;">历史：</p>
+      <div class="p-text" style="flex: 0 0 70%;padding: 0;flex:1;display: flex;justify-content: center">
+         <p style="margin: 0;padding-top: 7px;">{{history_max_lose}}</p>
+         <button  style="padding: 7px;color: white;background: dodgerblue;border-radius: 2px; margin:3px;"  tappable  (click)="up_date_index()">刷新</button>
+      </div>
+     
+  </div>
+  <div *ngIf="count>0"  style="display: flex;flex:1;" >
+      <p class="p-text" style="flex: 0 0 30%;">统计：</p>
+      <p class="p-text" style="flex: 0 0 70%;">{{count}}期内中了{{red}}期,最高连续输{{max_index}}期</p>
+  </div>
+  <div style="display: flex;flex:1;" *ngIf="count>0" >
+      <p class="p-td" style="flex: 0 0 30%;">中奖期号</p>
+      <p class="p-td" style="flex: 0 0 70%;">连续输的期数</p>
+  </div>
+  <div *ngFor="let data of datas"  style="display:flex;flex:1;flex-flow:wrap;">
+        <p class="p-td" style="flex: 0 0 30%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.open_index}}</p>
+        <p class="p-td" style="flex: 0 0 70%;margin: 0;display: flex;justify-content: center;align-items: center;">{{data.lose_index}}</p>
+  </div>
+  <hr>
+</ion-content>
